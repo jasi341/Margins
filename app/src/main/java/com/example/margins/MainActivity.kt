@@ -46,16 +46,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         Text(
             text = "Hello $name!",
             modifier = modifier,
-            style = getFontStyle(
-                deviceType = DeviceType.MOBILE
-            )
+           fontSize = getFontStyle(deviceType = DeviceType.MOBILE).headingFontSize,
+
         )
         Text(
             text = "Hello $name!",
             modifier = modifier,
-            style = getFontStyle(
-                deviceType = DeviceType.TABLET
-            )
+            fontSize = getFontStyle(deviceType = DeviceType.TABLET).headingFontSize
+
         )
     }
 }

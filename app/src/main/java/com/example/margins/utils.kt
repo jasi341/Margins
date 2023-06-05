@@ -1,8 +1,8 @@
 package com.example.margins
 
 import android.content.res.Configuration
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -18,6 +18,12 @@ data class DeviceDimensions(
     val top: Dp = 0.dp,
     val bottom: Dp = 0.dp,
 
+    )
+
+data class FontsDimensions(
+    val bodyFontSize:TextUnit,
+    val headingFontSize:TextUnit,
+    val buttonFontSize :TextUnit,
 )
 
 fun getDeviceDimensions(
@@ -34,14 +40,14 @@ fun getDeviceDimensions(
                     bottom = 10.dp,
 
 
-                )
-            } else {
+                    )
+            }
+            else {
                 DeviceDimensions(
                     start = 15.dp,
                     end = 15.dp,
                     top = 20.dp,
                     bottom = 10.dp,
-
                 )
             }
         }
@@ -54,7 +60,8 @@ fun getDeviceDimensions(
                     top = 72.dp,
                     bottom = 50.dp,
                 )
-            } else {
+            }
+            else {
                 DeviceDimensions(
                     start = 66.dp,
                     end = 66.dp,
@@ -66,17 +73,27 @@ fun getDeviceDimensions(
     }
 }
 
-fun getFontStyle(deviceType: DeviceType):TextStyle{
-    return when(deviceType){
+fun getFontStyle(
+    deviceType: DeviceType,
+)
+        :FontsDimensions {
+    return when (deviceType) {
         DeviceType.MOBILE -> {
-            TextStyle(
-                fontSize = 16.sp,
+            FontsDimensions(
+                headingFontSize = 20.sp,
+                bodyFontSize = 14.sp,
+                buttonFontSize = 14.sp,
             )
         }
+
         DeviceType.TABLET -> {
-            TextStyle(
-                fontSize = 28.sp,
+            FontsDimensions(
+                headingFontSize = 22.sp,
+                bodyFontSize = 14.sp,
+                buttonFontSize = 14.sp,
             )
+
         }
     }
 }
+
