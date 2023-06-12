@@ -38,22 +38,25 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+
+    val mobileFontSize = getFontStyle(deviceType = DeviceType.MOBILE).headingFontSize
+    val tabletFontSize = getFontStyle(deviceType = DeviceType.TABLET).headingFontSize
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-    verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxSize().background(Color(0xFF00FF00))
     ) {
         Text(
             text = "Hello $name!",
             modifier = modifier,
-           fontSize = getFontStyle(deviceType = DeviceType.MOBILE).headingFontSize,
+            fontSize = mobileFontSize
+            )
 
-        )
         Text(
             text = "Hello $name!",
             modifier = modifier,
-            fontSize = getFontStyle(deviceType = DeviceType.TABLET).headingFontSize
-
+            fontSize = tabletFontSize
         )
     }
 }
